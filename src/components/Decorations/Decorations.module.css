@@ -13,13 +13,6 @@
   filter: drop-shadow(0 8px 16px rgba(7, 28, 61, 0.18));
 }
 
-.sunflowerLeft {
-  top: 10rem;
-  left: 52rem;
-  width: clamp(88px, 16vw, 168px);
-  transform: rotate(-18deg);
-}
-
 .beachball {
   top: 22rem;
   right: -1.2rem;
@@ -28,9 +21,9 @@
 }
 
 .watermelon {
-  top: 75rem;
-  left: 36rem;
-  width: clamp(80px, 14vw, 150px);
+  top: 80rem;
+  left: 11rem;
+  width: clamp(80px, 14vw, 80px);
   transform: rotate(-12deg);
 }
 

@@ -27,12 +27,25 @@ const rankIcons: Record<number, string> = {
   3: '/images/ranking-icon03.png',
 };
 
-function RankList({ label, items }: { label: string; items: RankingItem[] }) {
+function RankList({
+  label,
+  items,
+  slots,
+}: {
+  label: string;
+  items: RankingItem[];
+  slots: number;
+}) {
+  const rows = Array.from({ length: slots }, (_, index) => {
+    const rank = index + 1;
+    return items.find((item) => item.rank === rank) ?? { rank, amount: '-' };
+  });
+
   return (
     <section className={styles.group}>
       <h3 className={styles.groupTitle}>{label}</h3>
       <ul className={styles.rows}>
-        {items.map((item) => (
+        {rows.map((item) => (
           <li key={item.rank} className={`${styles.row} ${medalClass[item.rank] ?? ''}`}>
             <span className={styles.rank}>
               {rankIcons[item.rank] ? <Image className={styles.rankIcon} src={rankIcons[item.rank]} alt="" width={64} height={64} /> : null}
@@ -55,9 +68,9 @@ export default function RankingCard({ title, target, ap, cl, leader, colorClass 
       </div>
 
       <div className={styles.body}>
-        <RankList label="AP" items={ap} />
-        <RankList label="CL" items={cl} />
-        <RankList label="リーダー" items={leader} />
+        <RankList label="AP" items={ap} slots={3} />
+        <RankList label="CL" items={cl} slots={2} />
+        <RankList label="リーダー" items={leader} slots={1} />
       </div>
     </article>
   );
