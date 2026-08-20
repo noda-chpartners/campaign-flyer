@@ -1,0 +1,150 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* 写真の上でカードの輪郭が埋もれないよう白いマットで縁取る */
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius-lg);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.head {
+  padding: 1.15rem 1.25rem 1.1rem;
+  background: var(--card-head);
+  color: #fff;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(1.35rem, 2.4vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  /* 明度の高い見出し色でも白文字が沈まないよう保険をかける */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.target {
+  display: inline-block;
+  margin-top: 0.55rem;
+  padding: 0.1rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--card-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+}
+
+/* カードの高さがグリッドで揃うため、余白を各セクションへ均等に配分する */
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0.35rem 1.25rem 1.25rem;
+}
+
+.group {
+  flex: 1 0 auto;
+  padding-top: 0.85rem;
+}
+
+.group + .group {
+  margin-top: 0.35rem;
+  border-top: 1px dashed var(--border-dashed);
+}
+
+.groupTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--navy-soft);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.groupTitle::before {
+  content: '';
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--card-ink);
+}
+
+.rows {
+  margin-top: 0.25rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.46rem 0;
+  color: var(--medal, var(--navy));
+}
+
+.row + .row {
+  border-top: 1px solid rgba(11, 42, 91, 0.07);
+}
+
+/* 順位色は全グループ共通（1位:金 / 2位:銀 / 3位:銅） */
+.rank1 {
+  --medal: #b8860b;
+}
+
+.rank2 {
+  --medal: #6d8093;
+}
+
+.rank3 {
+  --medal: #a4622f;
+}
+
+.rank {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.rankIcon {
+  flex-shrink: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  object-fit: contain;
+}
+
+.rankNum {
+  margin-right: 0.1em;
+  font-size: 1.55rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.amount {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+}
+
+.amountNone {
+  color: rgba(91, 109, 135, 0.55);
+  font-weight: 600;
+}

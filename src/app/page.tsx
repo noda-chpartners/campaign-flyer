@@ -1,69 +1,41 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from 'next/image';
+import { rankingData } from '@/data/ranking';
+import styles from './page.module.css';
+
+import CampaignInfo from '@/components/CampaignInfo/CampaignInfo';
+import Conditions from '@/components/Conditions/Conditions';
+import PaymentInfo from '@/components/Payment/PaymentInfo';
+import Exclusions from '@/components/Exclusions/Exclusions';
+import RankingCard from '@/components/RankingCard/RankingCard';
+import Background from '@/components/Background/Background';
+import Decorations from '@/components/Decorations/Decorations';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <>
+      <Background />
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <Decorations />
+        <header className={styles.header}>
+          <Image className={styles.logo} src={rankingData.header.logo} alt="CHpartnersロゴ" width={300} height={50} loading="eager" />
+          <h1 className={styles.title}>{rankingData.header.title}</h1>
+          <p className={styles.subtitle}>{rankingData.header.subtitle}</p>
+          <p className={styles.month}>{rankingData.month}</p>
+        </header>
+        <section className={styles.cards}>
+          <RankingCard colorClass={styles.groupA} {...rankingData.groupA} />
+          <RankingCard colorClass={styles.groupB} {...rankingData.groupB} />
+          <RankingCard colorClass={styles.groupC} {...rankingData.groupC} />
+        </section>
+        <CampaignInfo {...rankingData.campaign} />
+        <section className={styles.details}>
+          <Conditions {...rankingData.conditions} />
+          <div className={styles.detailsColumn}>
+            <PaymentInfo {...rankingData.payment} />
+            <Exclusions {...rankingData.exclusions} notes={rankingData.notes} />
+          </div>
+        </section>
       </main>
-    </div>
+    </>
   );
 }

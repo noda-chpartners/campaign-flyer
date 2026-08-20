@@ -1,0 +1,55 @@
+.layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.layer img {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(7, 28, 61, 0.18));
+}
+
+.sunflowerLeft {
+  top: 10rem;
+  left: 52rem;
+  width: clamp(88px, 16vw, 168px);
+  transform: rotate(-18deg);
+}
+
+.beachball {
+  top: 22rem;
+  right: -1.2rem;
+  width: clamp(68px, 12vw, 128px);
+  transform: rotate(12deg);
+}
+
+.watermelon {
+  top: 75rem;
+  left: 36rem;
+  width: clamp(80px, 14vw, 150px);
+  transform: rotate(-12deg);
+}
+
+.shaved {
+  bottom: 6rem;
+  right: -1.4rem;
+  width: clamp(76px, 13vw, 148px);
+}
+
+@media (max-width: 820px) {
+  .sunflowerLeft {
+    left: -1.4rem;
+    width: 84px;
+  }
+
+  .sunflowerRight,
+  .beachball,
+  .watermelon,
+  .shaved {
+    display: none;
+  }
+}

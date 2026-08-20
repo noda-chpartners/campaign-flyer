@@ -1,0 +1,72 @@
+.panel {
+  width: 100%;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.9rem;
+  border-bottom: 2px solid var(--border);
+  color: var(--navy-deep);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.title::before {
+  content: '';
+  width: 6px;
+  height: 1.15em;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--alert), var(--navy));
+}
+
+.item {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.93rem;
+}
+
+.item + .item {
+  margin-top: 0.45rem;
+}
+
+.item::before {
+  content: '×';
+  position: absolute;
+  left: 0.3rem;
+  color: var(--alert);
+  font-weight: 800;
+}
+
+.notes {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--border-dashed);
+}
+
+.note {
+  position: relative;
+  padding-left: 1.3rem;
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.note + .note {
+  margin-top: 0.35rem;
+}
+
+.note::before {
+  content: '※';
+  position: absolute;
+  left: 0;
+}

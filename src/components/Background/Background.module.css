@@ -1,0 +1,17 @@
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.background img {
+  object-fit: cover;
+}
+
+/* 写真の上に載るテキストのコントラストを確保するためのベール */
+.background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.5) 40%, rgba(226, 242, 250, 0.76) 100%);
+}
